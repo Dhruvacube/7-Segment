@@ -77,6 +77,32 @@ void led7Segment::setPinG(uint8_t pin){
   pinMode(pin, OUTPUT);
 };
 
-uint8_t* led7Segment::noDatabase(uint8_t number){
-    
+void led7Segment::set7SegType(uint8_t type){
+  _type = type;
+};
+
+bool* led7Segment::noDatabase(uint8_t number){
+    return noData[number];
+};
+
+bool* led7Segment::characterDatabse(char character){
+    return characterData[character - 65];
+};
+
+uint8_t led7Segment::returnCorrectOutputValue(bool value){
+    if(_type == CATHODE){
+        return !value;
+    } else {
+        return value;
+    }
+};
+
+void led7Segment::begin(bool* array){
+    digitalWrite(_pinA, returnCorrectOutputValue(array[0]));
+    digitalWrite(_pinB, returnCorrectOutputValue(array[1]));
+    digitalWrite(_pinC, returnCorrectOutputValue(array[2]));
+    digitalWrite(_pinD, returnCorrectOutputValue(array[3]));
+    digitalWrite(_pinE, returnCorrectOutputValue(array[4]));
+    digitalWrite(_pinF, returnCorrectOutputValue(array[5]));
+    digitalWrite(_pinG, returnCorrectOutputValue(array[6]));
 };

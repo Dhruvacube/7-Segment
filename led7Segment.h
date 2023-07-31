@@ -30,6 +30,7 @@ public:
   void setPinE(uint8_t pin);
   void setPinF(uint8_t pin);
   void setPinG(uint8_t pin);
+  void set7SegType(uint8_t type);
   void setCharacter(char character);
   void setCharacter(char character, bool dot);
   void setCharacter(char character, bool dot, uint8_t blink);
@@ -42,10 +43,51 @@ public:
   void displayRange(uint8_t start, uint8_t end, uint8_t delayTime);
 
 private:
-  uint8_t _pinA, _pinB, _pinC, _pinD, _pinE, _pinF, _pinG, _pinDP, _type;
-  void begin(uint8_t* array);
-  uint8_t* noDatabase(uint8_t number);
-  uint8_t* characterDatabse(char character);
+  bool noData[10][7] = {
+    {1, 1, 1, 1, 1, 1, 0}, // 0
+    {0, 1, 1, 0, 0, 0, 0}, // 1
+    {1, 1, 0, 1, 1, 0, 1}, // 2
+    {1, 1, 1, 1, 0, 0, 1}, // 3
+    {0, 1, 1, 0, 0, 1, 1}, // 4
+    {1, 0, 1, 1, 0, 1, 1}, // 5
+    {1, 0, 1, 1, 1, 1, 1}, // 6
+    {1, 1, 1, 0, 0, 0, 0}, // 7
+    {1, 1, 1, 1, 1, 1, 1}, // 8
+    {1, 1, 1, 1, 0, 1, 1}  // 9
+  };
+  bool characterData[26][7] = {
+    {1, 1, 1, 0, 1, 1, 1}, // A
+    {0, 0, 1, 1, 1, 1, 1}, // B
+    {1, 0, 0, 1, 1, 1, 0}, // C
+    {0, 1, 1, 1, 1, 0, 1}, // D
+    {1, 0, 0, 1, 1, 1, 1}, // E
+    {1, 0, 0, 0, 1, 1, 1}, // F
+    {1, 1, 1, 1, 1, 1, 1}, // G
+    {0, 1, 1, 0, 1, 1, 1}, // H
+    {0, 0, 0, 0, 1, 1, 0}, // I
+    {0, 1, 1, 1, 0, 0, 0}, // J
+    {0, 1, 1, 0, 1, 1, 0}, // K
+    {0, 0, 0, 1, 1, 1, 0}, // L
+    {1, 1, 1, 0, 1, 0, 0}, // M
+    {1, 1, 1, 0, 1, 0, 1}, // N
+    {1, 1, 1, 1, 1, 1, 0}, // O
+    {1, 1, 0, 0, 1, 1, 1}, // P
+    {1, 1, 1, 1, 1, 1, 1}, // Q
+    {1, 1, 0, 0, 1, 0, 1}, // R
+    {1, 0, 1, 1, 0, 1, 1}, // S
+    {0, 0, 0, 1, 1, 1, 1}, // T
+    {0, 1, 1, 1, 1, 1, 0}, // U
+    {0, 1, 1, 1, 1, 1, 0}, // V
+    {0, 1, 1, 1, 1, 1, 0}, // W
+    {0, 1, 1, 0, 1, 1, 1}, // X
+    {0, 1, 1, 1, 0, 1, 1}, // Y
+    {1, 1, 0, 1, 1, 0, 1}  // Z
+  };
+  uint_fast8_t _pinA, _pinB, _pinC, _pinD, _pinE, _pinF, _pinG, _pinDP, _type;
+  void begin(bool* array);
+  bool* noDatabase(uint8_t number);
+  bool* characterDatabse(char character);
+  uint8_t returnCorrectOutputValue(bool value);
 };
 
 #endif //  led7Segment_H
