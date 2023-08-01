@@ -31,8 +31,7 @@ public:
   void set7SegType(uint8_t type);
   void setCharacter(char character, bool dot=false, bool blink=false, uint8_t blinkTime=MIN_BLINK_TIME); //min delay is 1/2 second
   void setCharacter(char character, uint8_t blinkCount, bool dot=false, bool blink=true, uint8_t blinkTime=MIN_BLINK_TIME);
-  void setCustomCharacter(bool customCharacter[7]);
-  void setCustomCharacter(bool customCharacter[8]);
+  void setCustomCharacter(bool customCharacter[]);
   void displayRange(uint8_t start, uint8_t end, uint8_t delayTime=MIN_BLINK_TIME); //min delay is 1/2 second
 
 private:
