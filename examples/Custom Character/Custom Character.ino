@@ -15,9 +15,13 @@ void setup(){
 }
 
 void loop(){
-    seg7.setCustomCharacter([1,1,1,0,1,0,0,0]) // A, B, C, D, E, F, G, DP
+    bool custarr[7] = {1,1,1,0,1,0,0,0}
+    seg7.setCustomCharacter(custarr) // A, B, C, D, E, F, G, DP
     delay(DELAY);
 
-    seg7.setCustomCharacter([1,1,1,0,1,0,0]) // A, B, C, D, E, F, G
+    seg7.setCustomCharacter(seg7.nothing); // A, B, C, D, E, F, G, DP
+
+    bool custarr1[8] = {1,1,1,0,1,0,0,0}
+    seg7.setCustomCharacter(custarr1) // A, B, C, D, E, F, G
     delay(DELAY);
 }

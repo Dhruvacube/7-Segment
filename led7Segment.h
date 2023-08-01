@@ -11,8 +11,7 @@
 class led7Segment {
 public:
   led7Segment();
-  void setNumber(uint8_t number, bool dot=false, bool blink=false, uint8_t blinkTime=MIN_BLINK_TIME); //min delay is 1/2 second
-  void setNumber(uint8_t number, uint8_t blinkCount, bool dot=false, bool blink=true, uint8_t blinkTime=MIN_BLINK_TIME);
+  void setNumber(uint8_t number, bool dot=false);
   void setPin1(uint8_t pin);
   void setPin2(uint8_t pin);
   void setPin3(uint8_t pin);
@@ -28,11 +27,12 @@ public:
   void setPinE(uint8_t pin);
   void setPinF(uint8_t pin);
   void setPinG(uint8_t pin);
-  void set7SegType(uint8_t type);
-  void setCharacter(char character, bool dot=false, bool blink=false, uint8_t blinkTime=MIN_BLINK_TIME); //min delay is 1/2 second
-  void setCharacter(char character, uint8_t blinkCount, bool dot=false, bool blink=true, uint8_t blinkTime=MIN_BLINK_TIME);
+  void setType(uint8_t type);
+  void setCharacter(char character, bool dot=false);
   void setCustomCharacter(bool customCharacter[]);
-  void displayRange(uint8_t start, uint8_t end, uint8_t delayTime=MIN_BLINK_TIME); //min delay is 1/2 second
+  void displayRange(uint8_t start, uint8_t end, unsigned long delayTime=MIN_BLINK_TIME); //min delay is 1/2 second
+
+  bool nothing[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
 private:
   bool noData[10][7] = {
@@ -77,11 +77,11 @@ private:
   };
   uint_fast8_t _pinA, _pinB, _pinC, _pinD, _pinE, _pinF, _pinG;
   uint_fast8_t _pinDP = 0; //dot point defaults to 0
-  uint_fast8_t _type = CATHODE; //defaults to cathode
+  unsigned int _type = CATHODE; //defaults to cathode
   void begin(bool* array);
   bool* noDatabase(uint8_t number);
   bool* characterDatabse(char character);
-  uint8_t returnCorrectOutputValue(bool value);
+  bool returnCorrectOutputValue(bool value);
 };
 
 #endif //  led7Segment_H

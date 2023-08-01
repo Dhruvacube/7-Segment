@@ -1,5 +1,7 @@
 #include <led7Segment.h>
 
+#define DELAY 1000
+
 led7Segment seg7;
 
 void setup(){
@@ -20,21 +22,11 @@ void loop(){
     Serial.println("it should be single character within the single quotation mark");
     seg7.setCharacter('A'); // it should be single character within the single quotation mark
     delay(DELAY);
+
+    seg7.setCustomCharacter(seg7.nothing);
     
     Serial.println("display the decimal point");
-    seg7.setCharacter('A', dot = true); //display the decimal point
-    delay(DELAY);
-
-    Serial.println("blinks the character");
-    seg7.setCharacter('A', dot = false, blink = true); //blinks the character
-    delay(DELAY);
-
-    Serial.println("blinks the character 3 times");
-    seg7.setCharacter('A', dot = false, blink = true, blinkCount = 3); //blinks the character 3 times
-    delay(DELAY);
-
-    Serial.println("blinks the character 3 times with customized delay, otherwise the minimum delay is 1/2 second");
-    seg7.setCharacter('A', dot = false, blink = true, blinkCount = 3, blinkTime=DELAY); //blinks the character 3 times with customized delay, otherwise the minimum delay is 1/2 second
+    seg7.setCharacter('A', true); //display the decimal point
     delay(DELAY);
 
 
@@ -42,23 +34,13 @@ void loop(){
 
 
     Serial.println("Now displaying Numbers");
-    eg7.setNumber(0);
+    seg7.setNumber(0);
     delay(DELAY);
+
+    seg7.setCustomCharacter(seg7.nothing);
 
     Serial.println("display the decimal point");
-    seg7.setNumber(0, dot = true); //display the decimal point
-    delay(DELAY);
-
-    Seral.println("blinks the no");
-    seg7.setNumber(0, dot = false, blink = true); //blinks the no
-    delay(DELAY);
-
-    Serial.println("blinks the no 3 times");
-    seg7.setNumber(0, dot = false, blink = true, blinkCount = 3); //blinks the no 3 times
-    delay(DELAY);
-
-    Serial.println("blinks the no 3 times with customized delay, otherwise the minimum delay is 1/2 second");
-    seg7.setNumber(0, dot = false, blink = true, blinkCount = 3, blinkTime=DELAY); //blinks the no 3 times with customized delay, otherwise the minimum delay is 1/2 second
+    seg7.setNumber(0, true); //display the decimal point
     delay(DELAY);
     
 
@@ -67,11 +49,15 @@ void loop(){
 
     Serial.println("Now displaying Custom Characters");
     Serial.println("A, B, C, D, E, F, G, DP");
-    seg7.setCustomCharacter([1,1,1,0,1,0,0,0]) // A, B, C, D, E, F, G, DP
+    bool custarr[8] = {1,1,1,0,1,0,0,0};
+    seg7.setCustomCharacter(custarr); // A, B, C, D, E, F, G, DP
     delay(DELAY);
 
+    seg7.setCustomCharacter(seg7.nothing);
+
     Serial.println("A, B, C, D, E, F, G");
-    seg7.setCustomCharacter([1,1,1,0,1,0,0]) // A, B, C, D, E, F, G
+    bool custarr1[7] = {1,1,1,0,1,0,0};
+    seg7.setCustomCharacter(custarr1); // A, B, C, D, E, F, G
     delay(DELAY);
     
 
@@ -82,10 +68,9 @@ void loop(){
     Serial.println("Display 0 to 9 with 1 second delay");
     seg7.displayRange(0, 9, 1000); // Display 0 to 9 with 1 second delay
 
-        
 
     delay(DELAY+DELAY);
 
 
-    Serial.println("End of program")
+    Serial.println("End of program");
 }

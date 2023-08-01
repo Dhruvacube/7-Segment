@@ -89,11 +89,11 @@ bool* led7Segment::characterDatabse(char character){
     return characterData[character - 65];
 };
 
-uint8_t led7Segment::returnCorrectOutputValue(bool value){
+bool led7Segment::returnCorrectOutputValue(bool value){
     if(_type == CATHODE){
-        return !value;
-    } else {
         return value;
+    } else {
+        return !value;
     }
 };
 
@@ -105,70 +105,33 @@ void led7Segment::begin(bool* array){
     digitalWrite(_pinE, returnCorrectOutputValue(array[4]));
     digitalWrite(_pinF, returnCorrectOutputValue(array[5]));
     digitalWrite(_pinG, returnCorrectOutputValue(array[6]));
-    if (sizeof(array)/sizeof(array[0])==8){
+    if (sizeof(array)/sizeof(array[0])==8 && _pinDP != 0){
         digitalWrite(_pinDP, returnCorrectOutputValue(array[7]));
     }
 };
 
-void led7Segment::setNumber(uint8_t number, bool dot = false, bool blink = false, uint8_t blinkTime = MIN_BLINK_TIME){
+void led7Segment::setNumber(uint8_t number, bool dot = false){
+    begin(nothing);
     bool* array = noDatabase(number);
     array[7] = dot;
     begin(array);
-    if(blink){
-        delay(blinkTime);
-        begin(noDatabase(10));
-        delay(blinkTime);
-        begin(array);
-    }
 };
 
-void led7Segment::setNumber(uint8_t number, uint8_t blinkCount, bool dot = false, bool blink = true, uint8_t blinkTime = MIN_BLINK_TIME){
-    bool* array = noDatabase(number);
-    array[7] = dot;
-    begin(array);
-    if(blink){
-        for(uint8_t i = 0; i < blinkCount; i++){
-            delay(blinkTime);
-            begin(noDatabase(10));
-            delay(blinkTime);
-            begin(array);
-        }
-    }
-};
-
-void led7Segment::setCharacter(char character, bool dot = false, bool blink = false, uint8_t blinkTime = MIN_BLINK_TIME){
+void led7Segment::setCharacter(char character, bool dot = false){
+    begin(nothing);
     bool* array = characterDatabse(character);
     array[7] = dot;
     begin(array);
-    if(blink){
-        delay(blinkTime);
-        begin(noDatabase(10));
-        delay(blinkTime);
-        begin(array);
-    }
-};
-
-void led7Segment::setCharacter(char character, uint8_t blinkCount, bool dot = false, bool blink = true, uint8_t blinkTime = MIN_BLINK_TIME){
-    bool* array = characterDatabse(character);
-    array[7] = dot;
-    begin(array);
-    if(blink){
-        for(uint8_t i = 0; i < blinkCount; i++){
-            delay(blinkTime);
-            begin(noDatabase(10));
-            delay(blinkTime);
-            begin(array);
-        }
-    }
 };
 
 void led7Segment::setCustomCharacter(bool customCharacter[]){
+    begin(nothing);
     begin(customCharacter);
 };
 
-void led7Segment::displayRange(uint8_t start, uint8_t end, uint8_t delayTime=MIN_BLINK_TIME){
+void led7Segment::displayRange(uint8_t start, uint8_t end, unsigned long delayTime=MIN_BLINK_TIME){
     for(uint8_t i = start; i <= end; i++){
         setNumber(i);
         delay(delayTime);
     }
-};
+}

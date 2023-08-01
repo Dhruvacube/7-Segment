@@ -18,16 +18,10 @@ void setup(){
 void loop(){
     seg7.setNumber(0);
     delay(DELAY);
+
+    seg7.setCustomCharacter(seg7.nothing);
     
-    seg7.setNumber(0, dot = true); //display the decimal point
+    seg7.setNumber(0,true); //display the decimal point, if provided
     delay(DELAY);
 
-    seg7.setNumber(0, dot = false, blink = true); //blinks the no
-    delay(DELAY);
-
-    seg7.setNumber(0, dot = false, blink = true, blinkCount = 3); //blinks the no 3 times
-    delay(DELAY);
-
-    seg7.setNumber(0, dot = false, blink = true, blinkCount = 3, blinkTime=DELAY); //blinks the no 3 times with customized delay, otherwise the minimum delay is 1/2 second
-    delay(DELAY);
 }
