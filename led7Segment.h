@@ -27,7 +27,7 @@ public:
   void setPinE(uint8_t pin);
   void setPinF(uint8_t pin);
   void setPinG(uint8_t pin);
-  void setType(uint8_t type);
+  void setType(unsigned int type);
   void setCharacter(char character, bool dot=false);
   void setCustomCharacter(bool customCharacter[]);
   void displayRange(uint8_t start, uint8_t end, unsigned long delayTime=MIN_BLINK_TIME); //min delay is 1/2 second

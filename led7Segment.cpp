@@ -77,7 +77,7 @@ void led7Segment::setPinG(uint8_t pin){
   pinMode(pin, OUTPUT);
 };
 
-void led7Segment::set7SegType(uint8_t type){
+void led7Segment::setType(unsigned int type){
   _type = type;
 };
 
