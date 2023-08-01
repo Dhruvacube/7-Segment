@@ -33,7 +33,7 @@ public:
   void setCharacter(char character, uint8_t blinkCount, bool dot=false, bool blink=true, uint8_t blinkTime=MIN_BLINK_TIME);
   void setCustomCharacter(bool customCharacter[7]);
   void setCustomCharacter(bool customCharacter[8]);
-  void displayRange(uint8_t start, uint8_t end, uint8_t delayTime);
+  void displayRange(uint8_t start, uint8_t end, uint8_t delayTime=MIN_BLINK_TIME); //min delay is 1/2 second
 
 private:
   bool noData[10][7] = {
@@ -76,7 +76,9 @@ private:
     {0, 1, 1, 1, 0, 1, 1}, // Y
     {1, 1, 0, 1, 1, 0, 1}  // Z
   };
-  uint_fast8_t _pinA, _pinB, _pinC, _pinD, _pinE, _pinF, _pinG, _pinDP, _type;
+  uint_fast8_t _pinA, _pinB, _pinC, _pinD, _pinE, _pinF, _pinG;
+  uint_fast8_t _pinDP = 0; //dot point defaults to 0
+  uint_fast8_t _type = CATHODE; //defaults to cathode
   void begin(bool* array);
   bool* noDatabase(uint8_t number);
   bool* characterDatabse(char character);

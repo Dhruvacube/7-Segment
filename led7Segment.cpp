@@ -170,7 +170,7 @@ void led7Segment::setCustomCharacter(bool customCharacter[8]){
     begin(customCharacter);
 };
 
-void led7Segment::displayRange(uint8_t start, uint8_t end, uint8_t delayTime){
+void led7Segment::displayRange(uint8_t start, uint8_t end, uint8_t delayTime=MIN_BLINK_TIME){
     for(uint8_t i = start; i <= end; i++){
         setNumber(i);
         delay(delayTime);
