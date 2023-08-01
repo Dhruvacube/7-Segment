@@ -5,16 +5,14 @@
 
 #define CATHODE 0
 #define ANODE 1
+#define MIN_BLINK_TIME 500
 
 
 class led7Segment {
 public:
   led7Segment();
-  void setNumber(uint8_t number);
-  void setNumber(uint8_t number, bool dot);
-  void setNumber(uint8_t number, bool dot, bool blink);
-  void setNumber(uint8_t number, bool dot, bool blink, uint8_t blinkTime);
-  void setNumber(uint8_t number, bool dot, bool blink, uint8_t blinkTime, uint8_t blinkCount);
+  void setNumber(uint8_t number, bool dot=false, bool blink=false, uint8_t blinkTime=MIN_BLINK_TIME); //min delay is 1/2 second
+  void setNumber(uint8_t number, uint8_t blinkCount, bool dot=false, bool blink=true, uint8_t blinkTime=MIN_BLINK_TIME);
   void setPin1(uint8_t pin);
   void setPin2(uint8_t pin);
   void setPin3(uint8_t pin);
@@ -31,15 +29,10 @@ public:
   void setPinF(uint8_t pin);
   void setPinG(uint8_t pin);
   void set7SegType(uint8_t type);
-  void setCharacter(char character);
-  void setCharacter(char character, bool dot);
-  void setCharacter(char character, bool dot, uint8_t blink);
-  void setCharacter(char character, bool dot, uint8_t blink, uint8_t blinkTime);
-  void setCharacter(char character, bool dot, uint8_t blink, uint8_t blinkTime, uint8_t blinkCount);
-  void setCustomCharacter(uint8_t customCharacter[7]);
-  void setCustomCharacter(uint8_t customCharacter[7], bool dot);
-  void setCustomCharacter(uint8_t customCharacter[8]);
-  void setCustomCharacter(uint8_t customCharacter[8], bool dot);
+  void setCharacter(char character, bool dot=false, bool blink=false, uint8_t blinkTime=MIN_BLINK_TIME); //min delay is 1/2 second
+  void setCharacter(char character, uint8_t blinkCount, bool dot=false, bool blink=true, uint8_t blinkTime=MIN_BLINK_TIME);
+  void setCustomCharacter(bool customCharacter[7]);
+  void setCustomCharacter(bool customCharacter[8]);
   void displayRange(uint8_t start, uint8_t end, uint8_t delayTime);
 
 private:
