@@ -77,7 +77,7 @@ One can easily install using `arduino library manager` or one install using the 
   void displayRange(uint8_t start, uint8_t end, unsigned long delayTime=MIN_BLINK_TIME); //min delay is 1/2 second
   ```
 
-### Precompilers and other publically available variables
+### Precompilers and other publicly available variables
 ```cpp
 #define CATHODE 0
 #define ANODE 1
