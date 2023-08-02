@@ -65,6 +65,9 @@ A powerful but easy to use versatile 7 Segment Library for the arduino environme
   void setCustomCharacter(bool customCharacter[]);
   ```
 
+## Usage
+
+For the usage examples check out the [examples](https://github.com/Dhruvacube/7-Segment/tree/main/examples) folder
 
 ## Feedback
 
