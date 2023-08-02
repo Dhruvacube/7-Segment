@@ -49,6 +49,10 @@ A powerful but easy to use versatile 7 Segment Library for the arduino environme
   ```cpp
   void setPinDP(uint8_t pin);
   ```
+- #### Set the type of the display used (CATHODE | ANODE)
+  ```cpp
+  void setType(unsigned int type); //values accepted are CATHODE or ANODE
+  ```
 
 - #### Displaying no to the display
   ```cpp
@@ -64,6 +68,23 @@ A powerful but easy to use versatile 7 Segment Library for the arduino environme
   ```cpp
   void setCustomCharacter(bool customCharacter[]); // The customCharacter array length could be either 7 or 8 elemnts long
   ```
+
+- #### Displaying a range of numbers after a delay
+  ```cpp
+  void displayRange(uint8_t start, uint8_t end, unsigned long delayTime=MIN_BLINK_TIME); //min delay is 1/2 second
+  ```
+
+### Precompilers and other publically available variables
+```cpp
+#define CATHODE 0
+#define ANODE 1
+#define MIN_BLINK_TIME 500
+
+class led7Segment {
+public:
+  bool nothing[8] = {0, 0, 0, 0, 0, 0, 0, 0}; // could be used to turn of or display nothing on the 7 segment display
+};
+```
 
 ## Usage
 
