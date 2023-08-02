@@ -62,7 +62,7 @@ A powerful but easy to use versatile 7 Segment Library for the arduino environme
   
 - #### Displaying custom character to the display
   ```cpp
-  void setCustomCharacter(bool customCharacter[]); // The customCharacter array length ould be either 7 or 8 elemnts long
+  void setCustomCharacter(bool customCharacter[]); // The customCharacter array length could be either 7 or 8 elemnts long
   ```
 
 ## Usage
