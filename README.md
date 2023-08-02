@@ -1,8 +1,7 @@
 
 # 7 Segment Display Library
 
-A brief description of what this project does and who it's for
-
+A powerful but easy to use versatile 7 Segment Library
 
 ![GitHub all releases](https://img.shields.io/github/downloads/Dhruvacube/7-Segment/total)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
